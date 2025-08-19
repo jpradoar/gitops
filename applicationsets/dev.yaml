@@ -16,7 +16,7 @@ spec:
     spec:
       project: dev
       sources:
-      - repoURL: 'https://github.com/jpradoar/helm-chart.git'
+      - repoURL: https://github.com/jpradoar/helm-chart/
         chart: '{{name}}'
         targetRevision: '{{version}}'
         helm:
