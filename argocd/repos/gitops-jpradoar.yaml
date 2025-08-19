@@ -8,6 +8,6 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   url: https://github.com/jpradoar/gitops.git
-  name: helm-chart-jpradoar
+  name: gitops-jpradoar
   project: '*'
   type: git
