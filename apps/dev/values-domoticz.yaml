@@ -1,0 +1,25 @@
+
+general:
+  name: domoticz-01  # Siempre en minuscula 
+  tz: Europe/Amsterdam
+  environment: development
+
+image:
+  #repository: domoticz/domoticz
+  #tag: "stable"
+  imagePullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8080
+  https_port: 8443
+  path: /
+  loadBalancer: none # none/aws
+
+resources:
+  requests:
+   cpu: 100m
+   memory: 128Mi
+  limits:
+   cpu: 300m
+   memory: 384Mi
