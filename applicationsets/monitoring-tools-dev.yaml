@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: monitoring-tools-dev
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/jpradoar/gitops.git
+      revision: HEAD
+      files:
+        - path: "tools/dev/config.yaml"
+  template:
+    metadata:
+      name: '{{namespace}}-{{name}}'
+    spec:
+      project: default
+      sources:
+        # colocando la variable repourl puedo manejar multiples cahrts directamente desde el config.yaml del repo de gitops ;) 
+      - repoURL: '{{repoURL}}'
+        chart: '{{name}}'
+        targetRevision: '{{version}}'
+        helm:
+          valueFiles:
+            - $values/tools/dev/values-{{namespace}}-{{name}}.yaml
+      - repoURL: 'https://github.com/jpradoar/gitops.git'
+        targetRevision: main
+        ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+        - RespectIgnoreDifferences=true
+        - FailOnSharedResource=false
+        - PruneLast=true
