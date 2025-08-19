@@ -1,0 +1,14 @@
+- name: kube-prometheus-stack
+  version: "45.7.1"
+  namespace: monitoring
+  repoURL: https://prometheus-community.github.io/helm-charts
+
+- name: loki-stack
+  version: "2.9.10"
+  namespace: monitoring
+  repoURL: https://grafana.github.io/helm-charts
+
+- name: grafana
+  version: "7.3.6"
+  namespace: monitoring
+  repoURL: https://grafana.github.io/helm-charts
