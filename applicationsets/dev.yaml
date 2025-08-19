@@ -1,36 +1,42 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apps-dev
+  name: apps-stack
   namespace: argocd
 spec:
   generators:
-    - git:
-        repoURL: https://github.com/jpradoar/gitops.git
-        revision: HEAD
-        files:
-          - path: "apps/dev/config.yaml"
+  - git:
+      repoURL: https://github.com/jpradoar/gitops.git
+      revision: HEAD
+      files:
+        - path: "apps/dev/config.yaml" 
   template:
     metadata:
       name: '{{applicationName}}'
     spec:
-      project: default
-      sources:
-        - repoURL: https://jpradoar.github.io/helm-chart
-          chart: domoticz
-          targetRevision: 1.0.0
-          helm:
-            valueFiles:
-              - values-{{applicationName}}.yaml
+      project: dev
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
+      sources:
+
+        - repoURL: https://jpradoar.github.io/helm-chart
+          chart: '{{name}}'
+          targetRevision: '{{version}}'
+
+        - repoURL: https://github.com/jpradoar/gitops.git
+          ref: HEAD
+          path: apps/dev
+          helm:
+            valueFiles:
+              - values-{{applicationName}}.yaml
+
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=true
-          - RespectIgnoreDifferences=true
-          - FailOnSharedResource=false
-          - PruneLast=true
+        - CreateNamespace=true
+        - RespectIgnoreDifferences=true
+        - FailOnSharedResource=false
+        - PruneLast=true
