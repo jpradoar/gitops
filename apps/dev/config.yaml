@@ -12,7 +12,7 @@
 
 - applicationName: grafana
   name: grafana
-  version: 8.20.0
+  version: 9.3.2
   namespace: monitoring
   chartRepoURL: https://grafana.github.io/helm-charts
 
