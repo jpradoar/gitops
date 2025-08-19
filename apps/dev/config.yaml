@@ -1,3 +1,11 @@
+#- name: domoticz
+#  version: "1.0.0"
+#  namespace: domoticz
+
 - name: domoticz
-  version: "1.0.0"
-  namespace: domoticz
+  repoURL: https://jpradoar.github.io/helm-chart/
+  chart: domoticz
+  targetRevision: 1.0.0
+  helm:
+    valueFiles:
+      - $values/apps/dev/values-domoticz.yaml
