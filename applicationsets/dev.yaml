@@ -12,18 +12,18 @@ spec:
         - path: "apps/dev/config.yaml"
   template:
     metadata:
-      name: '{{namespace}}'
+      name: '{{applicationName}}'
     spec:
       project: dev
       sources:
-      - repoURL: https://jpradoar.github.io/helm-chart/
+      - repoURL: 'https://github.com/jpradoar/helm-chart.git'
         chart: '{{name}}'
         targetRevision: '{{version}}'
         helm:
           valueFiles:
             - $values/apps/dev/values-{{namespace}}.yaml
       - repoURL: 'https://github.com/jpradoar/gitops.git'
-        targetRevision: main
+        targetRevision: develop
         ref: values
       destination:
         server: https://kubernetes.default.svc
