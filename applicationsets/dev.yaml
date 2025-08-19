@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/jpradoar/gitops.git
         revision: HEAD
         files:
-          - path: "apps/dev/config.yaml"
+          - path: "apps/dev/config.yaml"  # Archivo que lista todas las apps
   template:
     metadata:
       name: '{{applicationName}}'
