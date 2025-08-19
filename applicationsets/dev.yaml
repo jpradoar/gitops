@@ -1,4 +1,3 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -6,26 +5,23 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/jpradoar/gitops.git
-      revision: main
-      files:
-        - path: "apps/dev/config.yaml"
+    - git:
+        repoURL: https://github.com/jpradoar/gitops.git
+        revision: HEAD
+        files:
+          - path: "apps/dev/config.yaml"
   template:
     metadata:
       name: '{{applicationName}}'
     spec:
       project: default
       sources:
-      - repoURL: https://github.com/jpradoar/helm-chart
-        chart: '{{name}}'
-        targetRevision: '{{version}}'
-        helm:
-          valueFiles:
-            - $values/apps/dev/values-{{namespace}}.yaml
-      - repoURL: https://github.com/jpradoar/gitops.git
-        targetRevision: main
-        ref: values
+        - repoURL: '{{repoURL}}'
+          chart: '{{name}}'
+          targetRevision: '{{version}}'
+          helm:
+            valueFiles:
+              - $values/apps/dev/values-{{applicationName}}.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
@@ -34,7 +30,7 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-        - CreateNamespace=true
-        - RespectIgnoreDifferences=true
-        - FailOnSharedResource=false
-        - PruneLast=true
+          - CreateNamespace=true
+          - RespectIgnoreDifferences=true
+          - FailOnSharedResource=false
+          - PruneLast=true
