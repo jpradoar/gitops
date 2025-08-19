@@ -6,7 +6,9 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
+  name: prometheus-community-helm-chart
   url: https://prometheus-community.github.io/helm-charts
+  project: '*'
   type: helm
 ---
 apiVersion: v1
@@ -17,5 +19,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
+  name: grafana-helm-chart
   url: https://grafana.github.io/helm-charts
+  project: '*'
   type: helm
