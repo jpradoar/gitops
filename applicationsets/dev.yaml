@@ -8,8 +8,8 @@ spec:
     - git:
         repoURL: https://github.com/jpradoar/gitops.git
         revision: main
-        directories:
-          - path: apps/dev/*
+        files:
+          - path: apps/dev/values-*.yaml
   template:
     metadata:
       name: '{{path.basename}}-dev'
@@ -18,10 +18,10 @@ spec:
       source:
         repoURL: https://github.com/jpradoar/helm-chart.git
         targetRevision: main
-        chart: '{{path.basename}}'     # el nombre del chart se toma del folder basename (ej: domoticz → domoticz)
+        chart: '{{path.basename | splitList "-" | last}}' 
         helm:
           valueFiles:
-            - '{{path}}'               # ruta relativa al repo gitops → apps/dev/values-<app>.yaml
+            - '{{path}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: dev
