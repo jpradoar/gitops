@@ -9,19 +9,19 @@ spec:
       repoURL: https://github.com/jpradoar/gitops.git
       revision: HEAD
       files:
-        - path: "apps/dev/config.yml"
+        - path: "apps/dev/config.yaml"
   template:
     metadata:
-      name: '{{namespace}}'    
+      name: '{{namespace}}'
     spec:
       project: default
       sources:
-      - repoURL: https://github.com/jpradoar/helm-chart
+      - repoURL: https://jpradoar.github.io/helm-chart/
         chart: '{{name}}'
         targetRevision: '{{version}}'
         helm:
           valueFiles:
-            - $values/services/dev/values-{{namespace}}.yaml
+            - values.yaml
       - repoURL: 'https://github.com/jpradoar/gitops.git'
         targetRevision: main
         ref: values
@@ -34,6 +34,5 @@ spec:
           selfHeal: true
         syncOptions:
         - CreateNamespace=true
+        - Replace=true
         - RespectIgnoreDifferences=true
-        - FailOnSharedResource=false
-        - PruneLast=true
