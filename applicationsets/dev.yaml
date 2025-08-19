@@ -9,22 +9,22 @@ spec:
         repoURL: https://github.com/jpradoar/gitops.git
         revision: main
         files:
-          - path: apps/dev/values-*.yaml
+          - path: apps/dev/config.yaml
   template:
     metadata:
-      name: '{{path.basename}}-dev'
+      name: '{{applicationName}}-dev'
     spec:
       project: default
       source:
-        repoURL: https://github.com/jpradoar/helm-chart.git
-        targetRevision: main
-        chart: '{{path.basename | splitList "-" | last}}' 
+        repoURL: '{{chartRepoURL}}'
+        targetRevision: '{{version}}'
+        chart: '{{name}}'
         helm:
           valueFiles:
-            - '{{path}}'
+            - apps/dev/values-{{name}}.yaml
       destination:
         server: https://kubernetes.default.svc
-        namespace: dev
+        namespace: '{{namespace}}'
       syncPolicy:
         automated:
           prune: true
