@@ -13,8 +13,6 @@ spec:
   template:
     metadata:
       name: '{{namespace}}'
-      annotations:
-        notifications.argoproj.io/subscribe.on-sync-succeeded.teams: channelName      
     spec:
       project: dev
       sources:
@@ -39,7 +37,3 @@ spec:
         - RespectIgnoreDifferences=true
         - FailOnSharedResource=false
         - PruneLast=true
-      ignoreDifferences:
-      - kind: Secret
-        jsonPointers:
-        - /data
