@@ -1,4 +1,4 @@
-applicationName: domoticz
+applicationName: domoticz-app
 name: domoticz
 version: 1.0.0
-namespace: domoticz-demo
+namespace: domoticz
