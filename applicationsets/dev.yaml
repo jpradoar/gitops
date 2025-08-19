@@ -1,5 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Applicationset
+kind: ApplicationSet
 metadata:
   name: apps-dev
   namespace: argocd
@@ -7,23 +7,23 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/jpradoar/gitops.git
-      revision: HEAD
+      revision: main
       files:
         - path: "apps/dev/config.yaml"
   template:
     metadata:
       name: '{{applicationName}}'
     spec:
-      project: dev
+      project: default
       sources:
-      - repoURL: https://github.com/jpradoar/helm-chart/
+      - repoURL: https://github.com/jpradoar/helm-chart
         chart: '{{name}}'
         targetRevision: '{{version}}'
         helm:
           valueFiles:
             - $values/apps/dev/values-{{namespace}}.yaml
-      - repoURL: 'https://github.com/jpradoar/gitops.git'
-        targetRevision: develop
+      - repoURL: https://github.com/jpradoar/gitops.git
+        targetRevision: main
         ref: values
       destination:
         server: https://kubernetes.default.svc
