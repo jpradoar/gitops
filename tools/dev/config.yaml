@@ -1,7 +1,12 @@
 - name: kube-prometheus-stack
-  version: "45.7.1"
+  version: "41.7.3"
   namespace: monitoring
   repoURL: https://prometheus-community.github.io/helm-charts
+
+- name: kube-state-metrics
+  version: "5.11.1" 
+  namespace: monitoring
+  repository: https://prometheus-community.github.io/helm-charts
 
 - name: loki-stack
   version: "2.9.10"
