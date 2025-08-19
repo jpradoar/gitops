@@ -1,7 +1,7 @@
 - name: domoticz
   version: "1.0.0"
-  namespace: domoticz
+  namespace: default
 
 - name: jpradoar/domoticz
   version: "1.0.0"
-  namespace: domoticz
+  namespace: default
