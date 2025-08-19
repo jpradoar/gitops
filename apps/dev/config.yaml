@@ -2,7 +2,7 @@ applicationName: domoticz
 name: domoticz
 version: 1.0.0
 namespace: domoticz-demo
-repoURL: https://github.com/jpradoar/helm-chart.git
+repoURL: https://jpradoar.github.io/helm-chart
 ---
 applicationName: prometheus
 name: prometheus
