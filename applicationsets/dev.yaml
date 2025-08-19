@@ -1,9 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apps-dev
+  name: services-dev
   namespace: argocd
 spec:
+# con este "generators" le especifico a ArgoCD que lea el archivo config.yaml 
+# para crear la N cantidad de aplicaciones que deseo.  Que en este caso pueden ser 1 a muchas. 
   generators:
   - git:
       repoURL: https://github.com/jpradoar/gitops.git
@@ -15,13 +17,17 @@ spec:
       name: '{{namespace}}'
     spec:
       project: default
+      # de acá saca los helm charts. Esto lo uso para que no todo el mundo tenga acceso o 
+      # tenga que manipular un repo donde estan los charts
       sources:
-      - repoURL: https://jpradoar.github.io/helm-chart/
+      - repoURL: https://jpradoar.github.io/helm-chart
         chart: '{{name}}'
         targetRevision: '{{version}}'
         helm:
           valueFiles:
-            - values.yaml
+            - $values/apps/dev/values-{{namespace}}.yaml
+      # y acá le digo que use los "values" del repo de gitops, de esta manera cualquier SRE,DevOps o Developer
+      # solo tiene que venir a modificar el repo de gitops sin más vueltas.  :D 
       - repoURL: 'https://github.com/jpradoar/gitops.git'
         targetRevision: main
         ref: values
@@ -34,5 +40,6 @@ spec:
           selfHeal: true
         syncOptions:
         - CreateNamespace=true
-        - Replace=true
         - RespectIgnoreDifferences=true
+        - FailOnSharedResource=false
+        - PruneLast=true
