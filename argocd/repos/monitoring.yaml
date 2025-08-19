@@ -23,3 +23,16 @@ stringData:
   url: https://grafana.github.io/helm-charts
   project: '*'
   type: helm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: repo-prometheus-oci
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: prometheus-oci
+  url: oci://ghcr.io/prometheus-community/helm-charts
+  type: helm
+  project: '*'
