@@ -1,23 +1,19 @@
-applicationName: domoticz
-name: domoticz
-version: 1.0.0
-namespace: domoticz-demo
-repoURL: https://jpradoar.github.io/helm-chart
----
-applicationName: prometheus
-name: prometheus
-version: 25.0.0
-namespace: monitoring
-repoURL: https://prometheus-community.github.io/helm-charts
----
-applicationName: grafana
-name: grafana
-version: 7.3.0
-namespace: monitoring
-repoURL: https://grafana.github.io/helm-charts
----
-applicationName: loki
-name: loki
-version: 6.21.0
-namespace: monitoring
-repoURL: https://grafana.github.io/helm-charts
+- applicationName: domoticz
+  name: domoticz
+  version: 1.0.0
+  namespace: domoticz-demo
+
+- applicationName: prometheus
+  name: prometheus
+  version: 45.0.0
+  namespace: monitoring
+
+- applicationName: grafana
+  name: grafana
+  version: 8.20.0
+  namespace: monitoring
+
+- applicationName: loki
+  name: loki
+  version: 2.10.0
+  namespace: monitoring
