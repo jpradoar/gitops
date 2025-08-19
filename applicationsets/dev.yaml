@@ -16,12 +16,9 @@ spec:
     spec:
       project: default
       sources:
-        - repoURL: '{{chartRepoURL}}'
-          chart: '{{name}}'
-          targetRevision: '{{version}}'
-        - repoURL: 'https://github.com/jpradoar/gitops.git'
-          ref: HEAD
-          path: apps/dev
+        - repoURL: https://jpradoar.github.io/helm-chart
+          chart: domoticz
+          targetRevision: 1.0.0
           helm:
             valueFiles:
               - values-{{applicationName}}.yaml
