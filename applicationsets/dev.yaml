@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps-dev
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/jpradoar/gitops.git
+      revision: HEAD
+      files:
+        - path: "apps/dev/config.yaml"
+  template:
+    metadata:
+      name: '{{applicationName}}'
+    spec:
+      project: dev
+      sources:
+      - repoURL: https://github.com/jpradoar/helm-chart/
+        chart: '{{name}}'
+        targetRevision: '{{version}}'
+        helm:
+          valueFiles:
+            - $values/apps/dev/values-{{namespace}}.yaml
+      - repoURL: 'https://github.com/jpradoar/gitops.git'
+        targetRevision: develop
+        ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+        - RespectIgnoreDifferences=true
+        - FailOnSharedResource=false
+        - PruneLast=true
