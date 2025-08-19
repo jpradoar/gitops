@@ -16,12 +16,15 @@ spec:
     spec:
       project: default
       sources:
-        - repoURL: '{{repoURL}}'
+        - repoURL: '{{chartRepoURL}}'
           chart: '{{name}}'
           targetRevision: '{{version}}'
+        - repoURL: 'https://github.com/jpradoar/gitops.git'
+          ref: HEAD
+          path: apps/dev
           helm:
             valueFiles:
-              - apps/dev/values-{{applicationName}}.yaml
+              - values-{{applicationName}}.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
