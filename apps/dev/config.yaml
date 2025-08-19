@@ -1,3 +1,10 @@
+# Este archivo es utilizado por el applicationset como multiplicador, es decir que 
+# Argocd viene a leer este archivo y ejecuta un deployment por cada bloque
+# donde cada bloque tiene
+# name:  el nombre del chart
+# version: la version concreta del chart (útil si queres probar charts viejos o estas desarrollando)
+# namespace: todo el deployment lo va a meter en ese namesapace:  útil cuando queres el mismo entorno pero con algunas variables diferentes. 
+
 - name: domoticz
   version: "1.0.0"
   namespace: domoticz01
