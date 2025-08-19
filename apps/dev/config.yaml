@@ -1,3 +1,7 @@
 - name: domoticz
   version: "1.0.0"
-  namespace: domoticz
+  namespace: domoticz01
+
+- name: domoticz
+  version: "1.0.0"
+  namespace: domoticz02
