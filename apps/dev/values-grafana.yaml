@@ -36,10 +36,9 @@ dashboards:
       gnetId: 2
       revision: 2
       datasource: Prometheus
-    custom-dashboard:
-      url: https://raw.githubusercontent.com/jpradoar/event-driven-architecture/refs/heads/main/monitoring/dashboards/test-dahsboard.json
-      token: ''
+    k8s-events:
+      url: https://raw.githubusercontent.com/jpradoar/gitops/refs/heads/main/tools/monitoring/grafana-dashboards/k8s-events.json
     simple-and-fast-troubleshooting:
-      url: https://raw.githubusercontent.com/jpradoar/event-driven-architecture/refs/heads/main/monitoring/dashboards/saft.json
+      url: https://raw.githubusercontent.com/jpradoar/gitops/refs/heads/main/tools/monitoring/grafana-dashboards/saft.json
     trace-deployment:
-      url: https://raw.githubusercontent.com/jpradoar/event-driven-architecture/refs/heads/main/monitoring/dashboards/trace_deployment.json
+      url: https://raw.githubusercontent.com/jpradoar/gitops/refs/heads/main/tools/monitoring/grafana-dashboards/trace_deployment.json
