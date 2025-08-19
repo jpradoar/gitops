@@ -1,0 +1,6 @@
+general:
+  name: domoticz-01
+  tz: Europe/Amsterdam
+
+service:
+  loadBalancer: aws # none/aws
