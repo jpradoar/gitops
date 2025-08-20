@@ -8,17 +8,12 @@ datasources:
       access: proxy
       isDefault: true
 
-    - name: Loki-stack
+    - name: Loki
       type: loki
       url: http://loki-stack:3100
       access: proxy
       isDefault: false
 
-    - name: Loki
-      type: loki
-      url: http://loki:3100
-      access: proxy
-      isDefault: false
 
 dashboardProviders:
   dashboardproviders.yaml:
