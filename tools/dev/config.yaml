@@ -1,4 +1,4 @@
-- name: kube-prometheus-stack
+- name: prometheus-community #kube-prometheus-stack
   version: "41.7.3"
   namespace: monitoring
   repoURL: https://prometheus-community.github.io/helm-charts
