@@ -41,3 +41,7 @@ dashboards:
       url: https://raw.githubusercontent.com/jpradoar/gitops/refs/heads/main/tools/monitoring/grafana-dashboards/saft.json
     trace-deployment:
       url: https://raw.githubusercontent.com/jpradoar/gitops/refs/heads/main/tools/monitoring/grafana-dashboards/trace_deployment.json
+    k8s-pvc-fast-view:
+      url: https://raw.githubusercontent.com/jpradoar/gitops/refs/heads/main/tools/monitoring/grafana-dashboards/pvc-fast-view.json
+    k8s-nodes:
+      url: https://raw.githubusercontent.com/jpradoar/gitops/refs/heads/main/tools/monitoring/grafana-dashboards/15759_rev37.json
