@@ -344,7 +344,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Kubernetes Events",
+  "title": "Kubernetes Events EDA demo",
   "uid": "k8sevents00001",
   "version": 1,
   "weekStart": ""
