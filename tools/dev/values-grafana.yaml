@@ -10,7 +10,7 @@ datasources:
 
     - name: Loki
       type: loki
-      url: http://loki:3100
+      url: http://monitoring-loki-stack:3100
 
 dashboardProviders:
   dashboardproviders.yaml:
