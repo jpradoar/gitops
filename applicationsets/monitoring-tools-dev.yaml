@@ -22,7 +22,8 @@ spec:
         targetRevision: '{{version}}'
         helm:
           valueFiles:
-            - $values/tools/dev/values-{{namespace}}-{{name}}.yaml
+            - $values/tools/dev/values-{{name}}.yaml
+            #- $values/tools/dev/values-{{namespace}}-{{name}}.yaml
       - repoURL: 'https://github.com/jpradoar/gitops.git'
         targetRevision: main
         ref: values
