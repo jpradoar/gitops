@@ -12,7 +12,8 @@ spec:
         - path: "tools/dev/config.yaml"
   template:
     metadata:
-      name: '{{namespace}}-{{name}}'
+      name: '{{name}}'
+      #name: '{{namespace}}-{{name}}'
     spec:
       project: dev-apps
       sources:
