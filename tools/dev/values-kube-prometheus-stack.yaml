@@ -1,1 +1,7 @@
 
+
+grafana:
+  enabled: false
+
+kubeStateMetrics:
+  enabled: true
