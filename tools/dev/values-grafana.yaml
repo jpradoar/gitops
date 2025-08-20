@@ -14,6 +14,12 @@ datasources:
       access: proxy
       isDefault: false
 
+    - name: Loki
+      type: loki
+      url: http://loki:3100
+      access: proxy
+      isDefault: false
+
 dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
