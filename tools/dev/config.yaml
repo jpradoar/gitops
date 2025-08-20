@@ -9,7 +9,7 @@
 #  repository: oci://ghcr.io/prometheus-community/charts/kube-state-metrics
 
 - name: loki-stack
-  version: "v2.9.3"
+  version: "2.6.5"
   namespace: monitoring
   repoURL: https://grafana.github.io/helm-charts
 
