@@ -13,13 +13,18 @@
 #  namespace: monitoring
 #  repository: https://prometheus-community.github.io/helm-charts
 
-- name: loki
-  version: "5.38.0"
-  namespace: monitoring
-  repoURL: https://grafana.github.io/helm-charts
+#- name: loki
+#  version: "5.38.0"
+#  namespace: monitoring
+#  repoURL: https://grafana.github.io/helm-charts
 
-- name: promtail
-  version: "6.15.5"
+#- name: promtail
+#  version: "6.15.5"
+#  namespace: monitoring
+#  repoURL: https://grafana.github.io/helm-charts
+
+- name: loki-stack
+  version: "2.9.9"
   namespace: monitoring
   repoURL: https://grafana.github.io/helm-charts
 
