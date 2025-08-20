@@ -1,15 +1,15 @@
-- name: prometheus-community #kube-prometheus-stack
-  version: "41.7.3"
+- name: kube-prometheus-stack
+  version: "56.6.2"
   namespace: monitoring
   repoURL: https://prometheus-community.github.io/helm-charts
 
 #- name: kube-state-metrics
 #  version: "5.11.1" 
 #  namespace: monitoring
-#  repository: oci://ghcr.io/prometheus-community/charts/kube-state-metrics
+#  repository: https://prometheus-community.github.io/helm-charts
 
 - name: loki-stack
-  version: "2.6.5"
+  version: "2.10.1"
   namespace: monitoring
   repoURL: https://grafana.github.io/helm-charts
 
