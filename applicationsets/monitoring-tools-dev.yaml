@@ -14,7 +14,7 @@ spec:
     metadata:
       name: '{{namespace}}-{{name}}'
     spec:
-      project: default
+      project: dev-apps
       sources:
         # colocando la variable repourl puedo manejar multiples cahrts directamente desde el config.yaml del repo de gitops ;) 
       - repoURL: '{{repoURL}}'
