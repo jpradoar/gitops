@@ -1,27 +1,8 @@
-#- name: kube-prometheus-stack
-#  version: "56.6.2"
-#  namespace: monitoring
-#  repoURL: https://prometheus-community.github.io/helm-charts
-#
+# ------------ base ------------
 - name: prometheus
   version: "27.31.0"
   namespace: monitoring
   repoURL: https://prometheus-community.github.io/helm-charts
-
-#- name: kube-state-metrics
-#  version: "5.11.1" 
-#  namespace: monitoring
-#  repository: https://prometheus-community.github.io/helm-charts
-
-#- name: loki
-#  version: "5.38.0"
-#  namespace: monitoring
-#  repoURL: https://grafana.github.io/helm-charts
-
-#- name: promtail
-#  version: "6.15.5"
-#  namespace: monitoring
-#  repoURL: https://grafana.github.io/helm-charts
 
 - name: loki-stack
   version: "2.10.2"
@@ -32,3 +13,17 @@
   version: "7.3.6"
   namespace: monitoring
   repoURL: https://grafana.github.io/helm-charts
+
+# ------------ extras ------------
+
+- name: kube-prometheus-stack
+  version: "56.6.2"
+  namespace: monitoring
+  repoURL: https://prometheus-community.github.io/helm-charts
+
+
+#- name: kube-state-metrics
+#  version: "5.11.1" 
+#  namespace: monitoring
+#  repository: https://prometheus-community.github.io/helm-charts
+
